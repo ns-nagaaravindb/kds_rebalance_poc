@@ -322,9 +322,9 @@ func runKCLMode(cfg *Config) error {
 	kclConfig.CallProcessRecordsEvenForEmptyRecordList = cfg.Consumer.CallProcessRecordsEvenForEmptyRecordList
 	kclConfig.EnableManualShardMapping = true
 	kclConfig.WithManualShardMapping(map[string]string{
+		"shardId-000000000000": "worker-1",
 		"shardId-000000000001": "worker-2",
-		"shardId-000000000002": "worker-1",
-		"shardId-000000000003": "worker-3",
+		"shardId-000000000002": "worker-3",
 	})
 
 	log.Printf("Application: %s, Worker ID: %s", cfg.Consumer.ApplicationName, cfg.Consumer.WorkerID)

@@ -29,7 +29,7 @@ consumer:
   application_name: kds-rebalance-consumer
   
   # Unique identifier for this consumer worker
-  worker_id: worker-1
+  worker_id: worker-0
   
   # Maximum number of records to fetch per shard per request
   max_records: 10

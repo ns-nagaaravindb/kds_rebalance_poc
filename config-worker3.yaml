@@ -13,17 +13,9 @@ producer:
   total_messages: 0
 
 consumer:
-  # Assignment mode: "kcl" (automatic rebalancing) or "manual" (explicit shard assignment)
-  assignment_mode: manual
-  
+  assignment_mode: kcl
   application_name: kds-rebalance-consumer
   worker_id: worker-3
   max_records: 10
   call_process_records_even_for_empty_list: false
-  
-  # Worker 3 handles the new shards created after resharding
-  assigned_shards:
-    - shardId-000000000002
-    - shardId-000000000003
-  
   poll_interval_ms: 1000

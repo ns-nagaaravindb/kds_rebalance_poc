@@ -192,11 +192,13 @@ The producer will generate random events and distribute them across all shards u
 
 ### 5. Run the Consumer
 
-In another terminal, start the consumer:
+In  terminal, start the consumers:
 
-**Option A: Single Consumer (KCL Mode - Automatic Rebalancing)**
+**Option A: Single Consumer (KCL Mode)**
 ```bash
-make consumer
+make consumer1 
+make consumer2
+make consumer3
 ```
 
 
