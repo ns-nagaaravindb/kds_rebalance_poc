@@ -1,0 +1,28 @@
+aws:
+  region: us-east-1
+  endpoint: http://localhost:4566
+  access_key: test
+  secret_key: test
+
+kinesis:
+  stream_name: test-stream
+
+producer:
+  batch_size: 10
+  batch_delay_ms: 1000
+  total_messages: 0
+
+consumer:
+  # Assignment mode: "kcl" (automatic rebalancing) or "manual" (explicit shard assignment)
+  assignment_mode: manual
+  
+  application_name: kds-rebalance-consumer
+  worker_id: worker-2
+  max_records: 10
+  call_process_records_even_for_empty_list: false
+  
+  # Worker 2 handles second shard
+  assigned_shards:
+    - shardId-000000000001
+  
+  poll_interval_ms: 1000

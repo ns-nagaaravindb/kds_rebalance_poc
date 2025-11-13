@@ -1,0 +1,27 @@
+services:
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack-kinesis
+    ports:
+      - "4566:4566"  # LocalStack gateway
+      - "4571:4571"  # Kinesis (legacy port, but still exposed for compatibility)
+    environment:
+      - SERVICES=kinesis,dynamodb
+      - DEBUG=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    volumes:
+      - "localstack-data:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./scripts/init-kinesis.sh:/etc/localstack/init/ready.d/init-kinesis.sh"
+    networks:
+      - kinesis-network
+
+volumes:
+  localstack-data:
+
+networks:
+  kinesis-network:
+    driver: bridge
